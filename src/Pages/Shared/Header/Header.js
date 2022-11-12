@@ -21,7 +21,7 @@ const Header = () => {
                 <>
                     
                     <li className='font-semibold'>
-                        <button onClick={ handleLogOut } className='btn-ghost'>Sign Out</button>
+                        <button onClick={ handleLogOut } className='btn-ghost'>Logout</button>
                     </li>
                 </>
                 :
