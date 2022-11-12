@@ -16,13 +16,15 @@ const Header = () => {
   <li><Link to='/'>Home</Link></li>
   <li><Link to='/blog'>Blogs</Link></li>
   
+  
   {
             user?.email ?
                 <>
-                    
+                    <li><Link to='/addService'>Add Service</Link></li>
                     <li className='font-semibold'>
                         <button onClick={ handleLogOut } className='btn-ghost'>Logout</button>
                     </li>
+
                 </>
                 :
                 <li className='font-semibold'><Link to='/login'>Login</Link></li>
