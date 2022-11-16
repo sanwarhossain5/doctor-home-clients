@@ -1,0 +1,35 @@
+import React from 'react';
+import { Link, useLoaderData } from 'react-router-dom';
+
+const SingleService = () => {
+    const singleservice = useLoaderData()
+    return (
+        <div>
+            <div className="card w-full bg-base-100 shadow-xl mt-20 lg:w-1/2 mx-auto">
+                <figure>
+
+                    <img className=' w-full' src={singleservice.picture} alt="Shoes" />
+
+                </figure>
+                <div className="card-body">
+                    <h2 className="card-title">
+                        {singleservice.title}
+                    </h2>
+                    <p>
+                        {
+                            singleservice.description
+                        }
+                    </p>
+                    <div className="card-actions justify-end">
+
+                        <p><span className='font-bold text-blue-600 '>Price:</span> {singleservice.price}</p>
+                        
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    );
+};
+
+export default SingleService;

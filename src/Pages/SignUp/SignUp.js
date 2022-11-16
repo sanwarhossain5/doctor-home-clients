@@ -6,7 +6,7 @@ import useTitle from '../../hooks/useTitle';
 
 const SignUp = () => {
   useTitle('Sign Up')
-const {createUser} = useContext(AuthContext)
+const {createUser ,googleSignIn} = useContext(AuthContext)
   const handleSignUp = event =>{
     event.preventDefault()
     const form = event.target
@@ -20,6 +20,15 @@ const {createUser} = useContext(AuthContext)
       form.reset()
     })
     .catch(err => console.error(err))
+
+    }
+    const handleGoogleSignIn = () => {
+      googleSignIn()
+          .then(result => {
+              const user = result.user
+              console.log(user)
+          })
+          .catch(error => console.log(error))
 
   }
   return (
@@ -54,6 +63,11 @@ const {createUser} = useContext(AuthContext)
         </div>
       </form>
        <p className='text-center'>Already have an account? <Link className='text-pink-800 font-bold' to="/login">Login</Link></p>
+
+       <div className='text-center'>
+                <button className='btn btn-outline btn-error mt-5 px-32' onClick={handleGoogleSignIn}>Google</button>
+
+            </div>
     </div>
   </div>
 </div>

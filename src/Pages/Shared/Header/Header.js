@@ -15,12 +15,15 @@ const Header = () => {
   const menu = <>
   <li><Link to='/'>Home</Link></li>
   <li><Link to='/blog'>Blogs</Link></li>
+  <li><Link to='/review'>Reviews</Link></li>
+  <li><Link to='/myreviews'>My Reviews</Link></li>
+  <li><Link to='/addservices'>Add service</Link></li>
   
   
   {
             user?.email ?
                 <>
-                    <li><Link to='/addService'>Add Service</Link></li>
+                    
                     <li className='font-semibold'>
                         <button onClick={ handleLogOut } className='btn-ghost'>Logout</button>
                     </li>
@@ -58,6 +61,16 @@ const Header = () => {
       }
     </ul>
   </div>
+  {/* <div>
+  <p><small className='mr-2'>{user?.displayName}</small></p>
+                {
+                    user?.photoURL ?
+                        <img style={{ height: '40px' }} src={user?.photoURL} alt="" />
+                        :
+                        <FaUser></FaUser>
+
+                }
+  </div> */}
  
 </div>
   );

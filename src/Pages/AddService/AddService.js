@@ -1,48 +1,95 @@
 import React from 'react';
+import { toast } from 'react-toastify';
+import useTitle from '../../hooks/useTitle';
+
 
 const AddService = () => {
-const handleAddService = event =>{
-  event.preventDefault()
-  const form = event.target;
-  const photoURL = form.photoURL.value;
-  const name = form.title.value;
-  const price = form.price.value;
-  const description =form.description.value;
- 
-  const serviceAdd = {
-    picture: photoURL,
-    title: name,
-    price,
-    description
+    useTitle('Add Service')
+    const handleSubmit = event => {
+        event.preventDefault()
+        const form = event.target
+        const name = form.name.value
+        const image = form.image.value
+        const price = form.price.value
+        
+        const description = form.details.value
 
-  }
+        const services = {
+            name,
+            image,
+            price,
+            
+            description
 
-  fetch('http://localhost:5000/service' , {
-    method: 'POST',
-    headers: {
-      "content-type": "application/json"
+        }
+        fetch('http://localhost:5000/services', {
+            method: 'POST',
+            headers: {
+                'content-type': 'application/json',
+            },
+            body: JSON.stringify(services)
+        })
+            .then(res => res.json())
+            .then(data => {
+                console.log(data)
+                if (data.acknowledged) {
+                    toast.success('services placed successfully')
+                    form.reset();
 
-    },
-    body: JSON.stringify(serviceAdd)
+                }
+            })
+            .catch(err => console.error(err))
 
-  } )
-  .then(res => res.json())
-  .then(data => {
-    console.log(data);
-  })
+    }
 
-}
-  return (
-    <div>
-     <form onSubmit={handleAddService}>
-     <input className='input input-primary' type="text" name="photoURL" id="" /><br />
-     <input className='input input-primary' type="text" name="title" id="" /> <br />
-     <input className='input input-primary' type="text" name="price" id="" /> <br />
-     <textarea  className='input input-primary' name="description" id="" cols="30" rows="10"></textarea> <br />
-     <button className='btn' type="submit">Add Service</button>
-     </form>
-    </div>
-  );
+    return (
+        <div>
+            <div className='w-1/2 mx-auto border rounded-lg p-5  bg-gray-100' >
+                <form onSubmit={handleSubmit} className="card-body  bg-slate-300 mb-3 rounded">
+                    <div className="form-control">
+                        <label className="label">
+                            <span className="label-text">Name</span>
+                        </label>
+                        <input type="text" name='name' placeholder="name of service" className="input input-bordered" />
+                    </div>
+                    <div className="form-control">
+                        <label className="label">
+                            <span className="label-text">Image</span>
+                        </label>
+                        <input type="text" name='image' placeholder="image of service" className="input input-bordered" />
+
+                    </div>
+                    <div className="form-control">
+                        <label className="label">
+                            <span className="label-text">Details</span>
+                        </label>
+                        <input type="text-area" name='details' placeholder="Description" className="input input-bordered" />
+
+                    </div>
+                    <div className="form-control">
+                        <label className="label">
+                            <span className="label-text">Price</span>
+                        </label>
+                        <input type="text" name='price' placeholder="Add Price" className="input input-bordered" />
+
+                    </div>
+                    <div className="form-control">
+                        <label className="label">
+                            <span className="label-text">Rating</span>
+                        </label>
+                        <input type="text" name='rating' placeholder="Rating" className="input input-bordered" />
+
+                    </div>
+                    <div className="form-control mt-6">
+                        <input className="btn bg-purple-400 border-none" type="submit" value="Add Service" />
+                    </div>
+                </form>
+
+
+
+            </div>
+        </div>
+    );
 };
 
 export default AddService;
