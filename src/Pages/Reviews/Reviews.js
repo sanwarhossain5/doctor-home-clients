@@ -10,7 +10,7 @@ const Reviews = () => {
     // const { _id } = useLoaderData()
 
     useEffect(() => {
-        fetch('http://localhost:5000/reviews')
+        fetch('https://doctor-home-server.vercel.app/reviews')
             .then(res => res.json())
             .then(data => setReviews(data))
     }, [])

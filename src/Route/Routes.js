@@ -53,13 +53,13 @@ export const router = createBrowserRouter([
             {
                 path: '/reviews/:id',
                 element: <AddReviews></AddReviews>,
-                loader: ({ params }) => fetch(`http://localhost:5000/services/${params.id}`)
+                loader: ({ params }) => fetch(`https://doctor-home-server.vercel.app/services/${params.id}`)
 
             },
             {
                 path: '/services/:id',
                 loader: async ({ params }) => {
-                    return fetch(`http://localhost:5000/services/${params.id}`)
+                    return fetch(`https://doctor-home-server.vercel.app/services/${params.id}`)
                 },
                 element: <SingleService></SingleService>
             },
