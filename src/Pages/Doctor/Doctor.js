@@ -9,7 +9,7 @@ const Doctor = () => {
     <div className="max-w-md">
       <h1 className="mb-5 text-5xl font-bold">Doctor Hero</h1>
       <p className="mb-5">A doctor is tasked with interacting with patients, diagnosing medical problems and successfully treating illness or injury. There are many specific areas in the field of medicine that students can study.</p>
-      <button className="btn btn-primary">Get Started</button>
+      
     </div>
   </div>
 </div>
